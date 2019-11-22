@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { RandomShopPageRoutingModule } from './random-shop-routing.module';
 
 import { RandomShopPage } from './random-shop.page';
+import {ShopsProvider} from 'src/providers/shops';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RandomShopPageRoutingModule
+    RandomShopPageRoutingModule,
+    HttpClientModule
   ],
-  declarations: [RandomShopPage]
+  declarations: [RandomShopPage],
+  providers: [ShopsProvider]
 })
 export class RandomShopPageModule {}
