@@ -6,6 +6,7 @@ import { ShopInfo } from 'src/models/shopInfo.model';
 export class ShopsProvider {
     private getShopsUrl = "https://cute-project.herokuapp.com/getshops?department=";
     private getShopInfoUrl = "https://cute-project.herokuapp.com/findshop?id=";
+    private writeReviewUrl = "https://cute-project.herokuapp.com/addreview?id=";
     constructor(public http: HttpClient) {}
 
     getShops(department:string){
@@ -14,5 +15,8 @@ export class ShopsProvider {
 
     getShopInfo(id:string) {
         return this.http.get<ShopInfo>(this.getShopInfoUrl+id);
+    }
+    addReviewUrl(id:string, user:string, rating:string, des:string) {
+        return this.writeReviewUrl+id+'&name='+user+'&rating='+rating+'&description='+des;
     }
 }

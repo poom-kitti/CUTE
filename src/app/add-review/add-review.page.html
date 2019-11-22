@@ -8,5 +8,42 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-item>
+    <ion-label>Location</ion-label>
+    <ion-select [(ngModel)]='department' (ionChange)='getShops(department)' placeholder='Select'>
+      <ion-select-option value='Engineering'>Engineering</ion-select-option>
+      <ion-select-option value='Communication Arts'>Communication Arts</ion-select-option>
+      <ion-select-option value='Accounting'>Accounting</ion-select-option>
+      <ion-select-option value='Arts'>Arts</ion-select-option>
+      <ion-select-option value='Political Science'>Political Science</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item *ngIf='shopList$ | async as shopList'>
+    <ion-label>Shop</ion-label>
+    <ion-select [(ngModel)]='shopId' placeholder='Select'>
+      <ion-select-option *ngFor='let shop of shopList' value={{shop.id}}>{{shop['name']}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div *ngIf='shopId'>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input [(ngModel)]='user' placeholde='Input'></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rating</ion-label>
+      <ion-select [(ngModel)]='rating' placeholde='Select'>
+        <ion-select-option value='0'>0</ion-select-option>
+        <ion-select-option value='1'>1</ion-select-option>
+        <ion-select-option value='2'>2</ion-select-option>
+        <ion-select-option value='3'>3</ion-select-option>
+        <ion-select-option value='4'>4</ion-select-option>
+        <ion-select-option value='5'>5</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Review</ion-label>
+      <ion-textarea [(ngModel)]='des' placeholde='Input'></ion-textarea>
+    </ion-item>
+    <ion-button expand='block' fill='clear' (click)='addReview()'>Submit</ion-button>  
+  </div>  
 </ion-content>

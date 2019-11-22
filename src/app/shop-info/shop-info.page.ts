@@ -11,7 +11,7 @@ import { ShopInfo } from 'src/models/shopInfo.model';
 export class ShopInfoPage implements OnInit {
   department: string;
   shopList$: Observable<any>;
-  shopId: number;
+  shopId: string;
   shopInfo$: Observable<ShopInfo>;
   
   constructor(private shopProvider: ShopsProvider) { }
@@ -24,7 +24,6 @@ export class ShopInfoPage implements OnInit {
     this.shopInfo$ = this.shopProvider.getShopInfo(id);
     console.log('method getshopinfo');
   }
-  
   ngOnInit() {
   }
 
