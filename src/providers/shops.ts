@@ -9,14 +9,14 @@ export class ShopsProvider {
     private writeReviewUrl = "https://cute-project.herokuapp.com/addreview?id=";
     constructor(public http: HttpClient) {}
 
-    getShops(department:string){
+    async getShops(department:string){
         return this.http.get(this.getShopsUrl+department);
     }
 
-    getShopInfo(id:string) {
+    async getShopInfo(id:string) {
         return this.http.get<ShopInfo>(this.getShopInfoUrl+id);
     }
-    addReviewUrl(id:string, user:string, rating:string, des:string) {
-        return this.writeReviewUrl+id+'&name='+user+'&rating='+rating+'&description='+des;
+    async addReview(id:string, user:string, rating:string, des:string) {
+        this.http.get(this.writeReviewUrl+id+'&name='+user+'&rating='+rating+'&description='+des).subscribe(res => console.log(res));
     }
 }

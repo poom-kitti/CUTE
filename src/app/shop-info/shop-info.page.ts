@@ -16,12 +16,12 @@ export class ShopInfoPage implements OnInit {
   
   constructor(private shopProvider: ShopsProvider) { }
 
-  getShops(department:string) {
-    this.shopList$ = this.shopProvider.getShops(department);
+  async getShops(department:string) {
+    this.shopList$ = await this.shopProvider.getShops(department);
     console.log('Method getShops');
   }
-  getShopInfo(id:string) {
-    this.shopInfo$ = this.shopProvider.getShopInfo(id);
+  async getShopInfo(id:string) {
+    this.shopInfo$ = await this.shopProvider.getShopInfo(id);
     console.log('method getshopinfo');
   }
   ngOnInit() {
