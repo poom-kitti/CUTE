@@ -3,6 +3,7 @@ import { ShopsProvider } from 'src/providers/shops';
 import { Observable } from 'rxjs';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-add-review',
@@ -14,7 +15,7 @@ export class AddReviewPage implements OnInit {
   shopList$: Observable<any>;
   shopId: string;
   user: string;
-  rating: string;
+  rating: string = '5';
   des: string = '';
 
   constructor(private shopProvider: ShopsProvider, public toastController: ToastController, public alertController: AlertController) { }
@@ -28,7 +29,7 @@ export class AddReviewPage implements OnInit {
       await this.shopProvider.addReview(this.shopId, this.user, this.rating, this.des);
       await this.toastMessage();
       this.user = null;
-      this.rating = null;
+      this.rating = '5';
       this.des = null;
     }
     else this.errorAlert();
@@ -52,6 +53,9 @@ export class AddReviewPage implements OnInit {
       }]
     });
     await alert.present();
+  }
+  tellStar($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
+    this.rating=$event.newValue.toString();
   }
   ngOnInit() {
   }

@@ -9,6 +9,7 @@ import { AddReviewPageRoutingModule } from './add-review-routing.module';
 import { AddReviewPage } from './add-review.page';
 import {ShopsProvider} from 'src/providers/shops';
 import {HttpClientModule} from '@angular/common/http';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     IonicModule,
     AddReviewPageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RatingModule
   ],
   declarations: [AddReviewPage],
   providers: [ShopsProvider]
