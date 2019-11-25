@@ -9,6 +9,7 @@ import { ShopInfoPageRoutingModule } from './shop-info-routing.module';
 import { ShopInfoPage } from './shop-info.page';
 import {ShopsProvider} from 'src/providers/shops';
 import {HttpClientModule} from '@angular/common/http';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     IonicModule,
     ShopInfoPageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RatingModule
   ],
   declarations: [ShopInfoPage],
   providers: [ShopsProvider]

@@ -36,7 +36,7 @@
       <div *ngIf='shop.review'>
         <div *ngFor='let review of shop.review'>
           <p>Name: {{review.name}}</p>
-          <p>Rating: {{review.rating}}</p>
+          <star-rating value='{{review.rating}}' size='24px' readonly='true' checkedcolor='gold'></star-rating>
           <p>Review: {{review.description}}</p>
         </div>
       </div> 

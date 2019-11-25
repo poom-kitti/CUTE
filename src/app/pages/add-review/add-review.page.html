@@ -31,14 +31,6 @@
     </ion-item>
     <ion-item>
       <ion-label>Rating</ion-label>
-      <!-- <ion-select [(ngModel)]='rating' placeholde='Select'>
-        <ion-select-option value='0'>0</ion-select-option>
-        <ion-select-option value='1'>1</ion-select-option>
-        <ion-select-option value='2'>2</ion-select-option>
-        <ion-select-option value='3'>3</ion-select-option>
-        <ion-select-option value='4'>4</ion-select-option>
-        <ion-select-option value='5'>5</ion-select-option>
-      </ion-select> -->
       <star-rating [value]='rating' size='24px' (rate)='tellStar($event)' readonly='false' checkedcolor='gold'></star-rating>
     </ion-item>
     <ion-item>
