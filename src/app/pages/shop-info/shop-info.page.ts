@@ -24,6 +24,14 @@ export class ShopInfoPage implements OnInit {
     this.shopInfo$ = await this.shopProvider.getShopInfo(id);
     console.log('method getshopinfo');
   }
+  async doRefresh(event) {
+    console.log('Do refresh');
+    await this.getShopInfo(this.shopId);
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 1000);
+  }
   ngOnInit() {
   }
 
