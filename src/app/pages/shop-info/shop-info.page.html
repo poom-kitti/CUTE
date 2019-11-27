@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>shop-info</ion-title>
+    <ion-title>Shop Information</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -35,6 +35,7 @@
         <p>Description: {{shop.description}}</p>
         <p>Operating Hour: {{shop.time}}</p>
         <p>Tel: {{shop.phone}}</p>
+        <ion-button (click)='goReview()'>Add review</ion-button>
         <div>
           <h3><b>Review</b></h3>
           <div *ngIf='shop.review.length==0'>No review available</div>

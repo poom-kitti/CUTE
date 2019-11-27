@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>RandomShop</ion-title>
+    <ion-title>Random Shop</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -23,5 +23,6 @@
     <h1>{{shp['name']}}</h1>
     <ion-img src={{shp.img}}></ion-img>
     <p>Description: {{shp.description}}</p>
+    <ion-button (click)='goInfo()'>More Info</ion-button>
   </ion-card>
 </ion-content>

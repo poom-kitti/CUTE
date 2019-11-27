@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+    <ion-buttons slot="start" (click)='goBack'>
+      <ion-back-button [defaultHref]='returnURL' text='Back'></ion-back-button>
     </ion-buttons>
-    <ion-title>add-review</ion-title>
+    <ion-title>Add Review</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -31,7 +31,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Rating</ion-label>
-      <star-rating [value]='rating' size='24px' (rate)='tellStar($event)' readonly='false' checkedcolor='gold'></star-rating>
+      <star-rating [value]='rating' size='24px' (rate)='update($event)' readonly='false' checkedcolor='gold'></star-rating>
     </ion-item>
     <ion-item>
       <ion-label position='stacked'>Review</ion-label>

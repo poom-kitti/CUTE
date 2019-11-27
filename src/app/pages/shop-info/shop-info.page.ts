@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShopsProvider } from 'src/providers/shops';
 import { Observable } from 'rxjs';
 import { ShopInfo } from 'src/models/shopInfo.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop-info',
@@ -14,7 +15,7 @@ export class ShopInfoPage implements OnInit {
   shopId: string;
   shopInfo$: Observable<ShopInfo>;
   
-  constructor(private shopProvider: ShopsProvider) { }
+  constructor(private shopProvider: ShopsProvider, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   async getShops(department:string) {
     this.shopList$ = await this.shopProvider.getShops(department);
@@ -32,7 +33,18 @@ export class ShopInfoPage implements OnInit {
       event.target.complete();
     }, 1000);
   }
+  goReview() {
+    this.shopInfo$.subscribe(x => this.router.navigateByUrl('/main/tab/review/'+x.location+'/'+x.id));
+  }
+
   ngOnInit() {
+  }
+  ionViewWillEnter() {
+    if (this.activatedRoute.snapshot.paramMap.get('department')) this.department = this.activatedRoute.snapshot.paramMap.get('department');
+    if (this.activatedRoute.snapshot.paramMap.get('id')) this.shopId = this.activatedRoute.snapshot.paramMap.get('id');
+    if (this.department && this.shopId && !this.shopInfo$) {
+      this.getShopInfo(this.shopId);
+    }
   }
 
 }

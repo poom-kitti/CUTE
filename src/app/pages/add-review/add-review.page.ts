@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { StarRatingComponent } from 'ng-starrating';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-review',
@@ -17,8 +18,10 @@ export class AddReviewPage implements OnInit {
   user: string;
   rating: string = '5';
   des: string = '';
+  returnURL: string = '/main/tab/shop';
 
-  constructor(private shopProvider: ShopsProvider, public toastController: ToastController, public alertController: AlertController) { }
+  constructor(private shopProvider: ShopsProvider, private toastController: ToastController, private alertController: AlertController,
+    private route: ActivatedRoute, private router: Router) { }
 
   async getShops(department:string) {
     this.shopList$ = await this.shopProvider.getShops(department);
@@ -54,9 +57,15 @@ export class AddReviewPage implements OnInit {
     });
     await alert.present();
   }
-  tellStar($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
+  updateStar($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
     this.rating=$event.newValue.toString();
   }
+
   ngOnInit() {
+  }
+  ionViewWillEnter() {
+    if (this.route.snapshot.paramMap.get('department')) this.department = this.route.snapshot.paramMap.get('department');
+    if (this.route.snapshot.paramMap.get('id')) this.shopId = this.route.snapshot.paramMap.get('id');
+    this.returnURL = '/main/tab/shop/'+this.department+'/'+this.shopId;
   }
 }

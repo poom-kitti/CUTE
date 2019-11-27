@@ -18,6 +18,10 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: '../home-page/home-page.module#HomePagePageModule'
+      },
+      {
+        path: 'review',
+        loadChildren: '../add-review/add-review.module#AddReviewPageModule'
       }
     ]
   },

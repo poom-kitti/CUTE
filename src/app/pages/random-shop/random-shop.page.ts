@@ -3,6 +3,7 @@ import { ShopsProvider } from 'src/providers/shops';
 import { Observable } from 'rxjs';
 import { ShopInfo } from 'src/models/shopInfo.model';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class RandomShopPage implements OnInit {
   shopNum: number;
   shopInfo$: Observable<ShopInfo>;
 
-  constructor(private shopProvider: ShopsProvider, public alertController: AlertController) { 
+  constructor(private shopProvider: ShopsProvider, public alertController: AlertController, private router: Router) { 
   }
   
   async getShops(department:string) {
@@ -32,7 +33,7 @@ export class RandomShopPage implements OnInit {
       this.shopList$ = await this.getShops(department);
       this.shopList$.subscribe(x => {
       let ranInt = this.randomInt(x.length);
-      let shopId = x[ranInt].id;
+      let shopId = ranInt ? x[ranInt].id : x[1].id;
       this.getShopInfo(shopId);
     });
     }
@@ -54,6 +55,9 @@ export class RandomShopPage implements OnInit {
       }]
     });
     await alert.present();
+  }
+  goInfo() {
+    this.shopInfo$.subscribe(x => this.router.navigateByUrl('/main/tab/shop/'+x.location+'/'+x.id));
   }
   ngOnInit() {
   }
