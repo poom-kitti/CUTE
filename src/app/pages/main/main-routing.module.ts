@@ -9,19 +9,19 @@ const routes: Routes = [
     children: [
       {
         path: 'random',
-        loadChildren: '../random-shop/random-shop.module#RandomShopPageModule'
+        loadChildren: () => import('../random-shop/random-shop.module').then(m => m.RandomShopPageModule)
       },
       {
         path: 'shop',
-        loadChildren: '../shop-info/shop-info.module#ShopInfoPageModule'
+        loadChildren: () => import('../shop-info/shop-info.module').then(m => m.ShopInfoPageModule)
       },
       {
         path: 'home',
-        loadChildren: '../home-page/home-page.module#HomePagePageModule'
+        loadChildren: () => import('../home-page/home-page.module').then( m => m.HomePagePageModule)
       },
       {
         path: 'review',
-        loadChildren: '../add-review/add-review.module#AddReviewPageModule'
+        loadChildren: () => import('../add-review/add-review.module').then(m => m.AddReviewPageModule)
       }
     ]
   },
