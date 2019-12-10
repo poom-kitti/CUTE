@@ -10,7 +10,7 @@
     letter-spacing: 0.05em;
 }
 #title_icon {
-    font-size: 25px;
+    font-size: 30px;
     cursor: pointer;
 }
 .font {
@@ -58,7 +58,7 @@
 #shop_name {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    max-width: 250px;
+    max-width: 150px;
     margin-right: 11px;
     height: 100%;
     padding: 10px 5px 10px 5px;
@@ -70,10 +70,12 @@
     color: black;
     padding: 10px 10px 5px 10px;
 }
+.margin_bot {
+    margin-bottom: 5px;
+}
 .des_title {
     width: 100px;
     margin-right: 10px;
-    margin-bottom: 5px;
 }
 #review_div {
     max-height: 300px;

@@ -13,8 +13,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AddReviewPage implements OnInit {
   department: string;
+  oldDepartmentUrl: string;
+  newDepartmentUrl: string;
   shopList$: Observable<any>;
   shopId: string;
+  oldShopIdUrl: string;
+  newShopIdUrl: string;
   user: string;
   rating: string = '5';
   des: string = '';
@@ -64,8 +68,23 @@ export class AddReviewPage implements OnInit {
   ngOnInit() {
   }
   ionViewWillEnter() {
-    if (this.route.snapshot.paramMap.get('department')) this.department = this.route.snapshot.paramMap.get('department');
-    if (this.route.snapshot.paramMap.get('id')) this.shopId = this.route.snapshot.paramMap.get('id');
-    this.returnURL = '/main/tab/shop/'+this.department+'/'+this.shopId;
+    if (this.route.snapshot.paramMap.get('department')) {
+      if (!this.oldDepartmentUrl) this.oldDepartmentUrl = this.route.snapshot.paramMap.get('department');
+      else this.newDepartmentUrl = this.route.snapshot.paramMap.get('department');
+    } 
+    if (this.route.snapshot.paramMap.get('id')) {
+      if (!this.oldShopIdUrl) this.oldShopIdUrl = this.route.snapshot.paramMap.get('id');
+      else this.newShopIdUrl = this.route.snapshot.paramMap.get('id');
+    } 
+    if (this.oldShopIdUrl && !this.newShopIdUrl && this.oldDepartmentUrl && !this.newDepartmentUrl) {
+      this.department = this.oldDepartmentUrl;
+      this.shopId = this.oldShopIdUrl;
+      this.returnURL = '/main/tab/shop/'+this.department+'/'+this.shopId;
+    }
+    else if (this.oldDepartmentUrl != this.newDepartmentUrl || this.oldShopIdUrl != this.newShopIdUrl) {
+      this.department = this.newDepartmentUrl;
+      this.shopId = this.newShopIdUrl;
+      this.returnURL = '/main/tab/shop/'+this.department+'/'+this.shopId;
+    }
   }
 }
