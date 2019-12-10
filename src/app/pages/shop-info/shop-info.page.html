@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Shop Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+    refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-item>
+    <ion-label>Location</ion-label>
+    <ion-select [(ngModel)]='department' (ionChange)='getShops(department)' placeholder='Select'>
+      <ion-select-option value='Engineering'>Engineering</ion-select-option>
+      <ion-select-option value='Communication Arts'>Communication Arts</ion-select-option>
+      <ion-select-option value='Accounting'>Accounting</ion-select-option>
+      <ion-select-option value='Arts'>Arts</ion-select-option>
+      <ion-select-option value='Political Science'>Political Science</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item *ngIf='shopList$ | async as shopList'>
+    <ion-label>Shop</ion-label>
+    <ion-select [(ngModel)]='shopId' (ionChange)='getShopInfo(shopId)' placeholder='Select'>
+      <ion-select-option *ngFor='let shop of shopList' value={{shop.id}}>{{shop['name']}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+      <ion-card *ngIf='shopInfo$ | async as shop'>
+        <h1>{{shop['name']}}</h1>
+        <ion-img src={{shop.img}}></ion-img>
+        <p>Description: {{shop.description}}</p>
+        <p>Operating Hour: {{shop.time}}</p>
+        <p>Tel: {{shop.phone}}</p>
+        <ion-button (click)='goReview()'>Add review</ion-button>
+        <div>
+          <h3><b>Review</b></h3>
+          <div *ngIf='shop.review.length==0'>No review available</div>
+          <div *ngIf='shop.review'>
+              <div *ngFor='let review of shop.review'>
+                <p>Name: {{review.name}}</p>
+                <star-rating value='{{review.rating}}' size='24px' readonly='true' checkedcolor='gold'></star-rating>
+                <p *ngIf='review.description'>Review: {{review.description}}</p>
+                <p *ngIf='!review.description'>Review: Not available</p>
+              </div>
+          </div> 
+        </div>
+      </ion-card>
+</ion-content>
