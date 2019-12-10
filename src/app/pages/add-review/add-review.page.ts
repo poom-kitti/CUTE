@@ -38,6 +38,7 @@ export class AddReviewPage implements OnInit {
       this.user = null;
       this.rating = '5';
       this.des = null;
+      this.returnURL = '/main/tab/shop/'+this.department+'/'+this.shopId;
     }
     else this.errorAlert();
   }
