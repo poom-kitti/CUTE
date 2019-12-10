@@ -1,13 +1,25 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Home Page</ion-title>
+<ion-header class='font'>
+  <ion-toolbar color='primary' id='title'>
+  CUTE
   </ion-toolbar>
+  <div id='title_des'><b>Chulalongkorn University The Eater</b></div>
 </ion-header>
 
-<ion-content>
-  <ion-content>
-    <ion-button expand="block" routerLink="/random-shop/" routerDirection="forward">Random Shop</ion-button>
-    <ion-button expand="block" routerLink="/shop-info/" routerDirection="forward">Shop Info</ion-button>
-    <ion-button expand="block" routerLink="/add-review/" routerDirection="forward">Add Review</ion-button>
-  </ion-content>
+<ion-content class='font' color='secondary'>
+  <div id='full_content'>
+    <div id='content_div'>
+      <div id='content_title'>NEWS AROUND CU</div>
+      <ion-slides id='slide' pager="true" [options]="slideOpts">
+        <ion-slide> 
+          <ion-img src='../../../assets/agoda.jpg'></ion-img>
+        </ion-slide>
+        <ion-slide>
+          <ion-img src='../../../assets/cunex.jpg'></ion-img>
+        </ion-slide>
+        <ion-slide>
+          <ion-img src='../../../assets/plearn.jpg'></ion-img>
+        </ion-slide>
+      </ion-slides>    
+    </div>    
+  </div>
 </ion-content>
