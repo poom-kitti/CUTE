@@ -14,6 +14,7 @@ export class ShopInfoPage implements OnInit {
   shopList$: Observable<any>;
   shopId: string;
   shopInfo$: Observable<ShopInfo>;
+  avgRating: number;
   
   constructor(private shopProvider: ShopsProvider, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -22,7 +23,19 @@ export class ShopInfoPage implements OnInit {
     console.log('Method getShops');
   }
   async getShopInfo(id:string) {
+    this.avgRating=0;
     this.shopInfo$ = await this.shopProvider.getShopInfo(id);
+    this.shopInfo$.subscribe(x => {
+      if(x.review.length !== 0) {
+        let totalStars = 0;
+        let count=0
+        for(let i=0; i<x.review.length; i++){
+          totalStars+=x.review[i].rating;
+          count+=1;
+        }
+        this.avgRating=totalStars/count;
+        console.log(this.avgRating);
+    }});
     console.log('method getshopinfo');
   }
   async doRefresh(event) {
@@ -36,7 +49,9 @@ export class ShopInfoPage implements OnInit {
   goReview() {
     this.shopInfo$.subscribe(x => this.router.navigateByUrl('/main/tab/review/'+x.location+'/'+x.id));
   }
-
+  goHome() {
+    this.router.navigateByUrl('main/tab/home');
+  }
   ngOnInit() {
   }
   ionViewWillEnter() {
