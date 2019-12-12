@@ -37,12 +37,17 @@
 }
 
 .button {
-  text-align: center;
+  // text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: 500;
 }
+
+#go_button {
+  text-align: center;
+}
+
 .shadow{
   box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.25);
   width: 140px;
@@ -81,16 +86,12 @@
   color: #000000;
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
-  // margin-left: 5px;
-  // margin-top: 10px;
 }
 
 #card {
   background-color: #FFFFFF;
   margin-top: 0;
   margin-bottom: 0;
-  // padding-top: 5px;
-  // padding-bottom: 10px;
   padding: 5px 10px 10px 10px;
 }
 
@@ -107,4 +108,15 @@
 
 #gen_div {
   max-width: 500px;
+}
+
+#info_button {
+  margin-right: 10px
+}
+
+@media (max-width: 350px){
+  .button_limit {
+    font-size: 18px;
+    width: 120px;
+  }
 }

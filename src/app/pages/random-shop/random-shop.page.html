@@ -17,7 +17,7 @@
       <ion-select-option value='Political Science'>Political Science</ion-select-option>
     </ion-select>
   </ion-item>
-  <div class='button'>
+  <div class='button' id='go_button'>
     <ion-button class='shadow' (click)='genShop(department)'>Let's GO!</ion-button>
   </div>
   <div class='flex_center' *ngIf='shopInfo$ | async as shp'>
@@ -27,11 +27,9 @@
       <div id='card'>
         <p class="font">Description: {{shp.description}}</p>
       </div>
-      <div class="button">
-        <ion-button class='shadow' (click)='goInfo()'>More Info</ion-button>
-      </div>
-      <div class="button">
-        <ion-button class='shadow' (click)='goReview()'>REVIEW</ion-button>
+      <div class="button flex_center">
+        <ion-button class='shadow button_limit' id='info_button' (click)='goInfo()'>More Info</ion-button>
+        <ion-button class='shadow button_limit' (click)='goReview()'>REVIEW</ion-button>
       </div>
     </div>
   </div>
