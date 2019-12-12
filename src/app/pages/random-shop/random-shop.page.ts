@@ -34,7 +34,7 @@ export class RandomShopPage implements OnInit {
       this.shopList$ = await this.getShops(department);
       this.shopList$.pipe(take(1)).subscribe(x => {
       let ranInt = this.randomInt(x.length);
-      let shopId = ranInt ? x[ranInt].id : x[1].id;
+      let shopId = ranInt ? x[ranInt-1].id : x[0].id;
       this.getShopInfo(shopId);
     });
     }
