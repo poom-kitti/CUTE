@@ -3,7 +3,6 @@ import { ShopsProvider } from 'src/providers/shops';
 import { Observable } from 'rxjs';
 import { ShopInfo } from 'src/models/shopInfo.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shop-info',
@@ -30,7 +29,7 @@ export class ShopInfoPage implements OnInit {
   async getShopInfo(id:string) {
     this.avgRating=0;
     this.shopInfo$ = await this.shopProvider.getShopInfo(id);
-    this.shopInfo$.pipe(take(1)).subscribe(x => {
+    this.shopInfo$.subscribe(x => {
       if(x.review.length !== 0) {
         let totalStars = 0;
         let count=0
@@ -51,7 +50,7 @@ export class ShopInfoPage implements OnInit {
     }, 1000);
   }
   goReview() {
-    this.shopInfo$.pipe(take(1)).subscribe(x => this.router.navigateByUrl('/main/tab/review/'+x.location+'/'+x.id));
+    this.shopInfo$.subscribe(x => this.router.navigateByUrl('/main/tab/review/'+x.location+'/'+x.id));
   }
   goHome() {
     this.router.navigateByUrl('main/tab/home');
@@ -77,5 +76,5 @@ export class ShopInfoPage implements OnInit {
       this.shopId = this.newShopIdUrl;
       this.getShopInfo(this.shopId);
     }
-  } 
+  }
 }

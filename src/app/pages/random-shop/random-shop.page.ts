@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { ShopInfo } from 'src/models/shopInfo.model';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { take } from 'rxjs/operators';
 
 
 @Component({
@@ -18,9 +17,9 @@ export class RandomShopPage implements OnInit {
   shopNum: number;
   shopInfo$: Observable<ShopInfo>;
 
-  constructor(private shopProvider: ShopsProvider, public alertController: AlertController, private router: Router) { 
+  constructor(private shopProvider: ShopsProvider, public alertController: AlertController, private router: Router) {
   }
-  
+
   async getShops(department:string) {
     console.log('Method getShops');
     return await this.shopProvider.getShops(department);
@@ -32,7 +31,7 @@ export class RandomShopPage implements OnInit {
   async genShop(department:string) {
     if(this.department != null){
       this.shopList$ = await this.getShops(department);
-      this.shopList$.pipe(take(1)).subscribe(x => {
+      this.shopList$.subscribe(x => {
       let ranInt = this.randomInt(x.length);
       let shopId = ranInt ? x[ranInt].id : x[1].id;
       this.getShopInfo(shopId);
@@ -58,9 +57,15 @@ export class RandomShopPage implements OnInit {
     await alert.present();
   }
   goInfo() {
-    this.shopInfo$.pipe(take(1)).subscribe(x => this.router.navigateByUrl('/main/tab/shop/'+x.location+'/'+x.id));
+    this.shopInfo$.subscribe(x => this.router.navigateByUrl('/main/tab/shop/'+x.location+'/'+x.id));
+  }
+  goReview() {
+    this.shopInfo$.subscribe(x => this.router.navigateByUrl('/main/tab/review/'+x.location+'/'+x.id));
   }
   ngOnInit() {
+  }
+  goHome() {
+    this.router.navigateByUrl('main/tab/home');
   }
 
 }
