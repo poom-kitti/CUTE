@@ -18,9 +18,9 @@ export class RandomShopPage implements OnInit {
   shopNum: number;
   shopInfo$: Observable<ShopInfo>;
 
-  constructor(private shopProvider: ShopsProvider, public alertController: AlertController, private router: Router) { 
+  constructor(private shopProvider: ShopsProvider, public alertController: AlertController, private router: Router) {
   }
-  
+
   async getShops(department:string) {
     console.log('Method getShops');
     return await this.shopProvider.getShops(department);
@@ -60,7 +60,13 @@ export class RandomShopPage implements OnInit {
   goInfo() {
     this.shopInfo$.pipe(take(1)).subscribe(x => this.router.navigateByUrl('/main/tab/shop/'+x.location+'/'+x.id));
   }
+  goReview() {
+    this.shopInfo$.pipe(take(1)).subscribe(x => this.router.navigateByUrl('/main/tab/review/'+x.location+'/'+x.id));
+  }
   ngOnInit() {
+  }
+  goHome() {
+    this.router.navigateByUrl('main/tab/home');
   }
 
 }

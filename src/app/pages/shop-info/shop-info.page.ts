@@ -77,5 +77,5 @@ export class ShopInfoPage implements OnInit {
       this.shopId = this.newShopIdUrl;
       this.getShopInfo(this.shopId);
     }
-  } 
+  }
 }

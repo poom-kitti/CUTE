@@ -1,13 +1,11 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Random Shop</ion-title>
+  <ion-toolbar color='primary' class='title'>
+    <div class='flex' id='cute' (click)='goHome()'>CUTE</div>
+    <ion-icon name="home" slot='end' id='title_icon' (click)='goHome()'></ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color='secondary'>
   <ion-item>
     <ion-label>Location</ion-label>
     <ion-select [(ngModel)]='department' placeholder='Select'>
@@ -18,11 +16,22 @@
       <ion-select-option value='Political Science'>Political Science</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-button (click)='genShop(department)'>Generate</ion-button>
-  <ion-card *ngIf='shopInfo$ | async as shp'>
-    <h1>{{shp['name']}}</h1>
-    <ion-img src={{shp.img}}></ion-img>
-    <p>Description: {{shp.description}}</p>
-    <ion-button (click)='goInfo()'>More Info</ion-button>
-  </ion-card>
+  <div class='button'>
+    <ion-button class='shadow' (click)='genShop(department)'>Let's GO!</ion-button>
+  </div>
+  <div class='flex_center' *ngIf='shopInfo$ | async as shp'>
+    <div id='gen_div'>
+      <h1 class='r_color sect_title flex_center' id='shop_name'>{{shp['name']}}</h1>
+      <ion-img class='shop_image' src={{shp.img}}></ion-img>
+      <div id='card'>
+        <p class="font">Description: {{shp.description}}</p>
+      </div>
+      <div class="button">
+        <ion-button class='shadow' (click)='goInfo()'>More Info</ion-button>
+      </div>
+      <div class="button">
+        <ion-button class='shadow' (click)='goReview()'>REVIEW</ion-button>
+      </div>
+    </div>
+  </div>
 </ion-content>
