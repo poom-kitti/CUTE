@@ -1,0 +1,95 @@
+.title {
+  padding: 5px 20px;
+  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  text-shadow: 0 4px 2px rgba(0, 0, 0, 0.25);
+}
+
+#cute {
+  cursor: pointer;
+  letter-spacing: 0.05em;
+}
+
+#title_icon {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.shadow{
+  box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.25);
+  width: 140px;
+  height: 30px;
+}
+
+#shop_name {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  max-width: 150px;
+  margin-right: 11px;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100%;
+  padding: 10px 5px;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.r_color {
+  background-color: #fa6967;
+}
+
+.sect_title {
+  font-size: 20px;
+  color: white;
+}
+
+.flex_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.font {
+  color: #000000;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  // margin-left: 5px;
+  // margin-top: 10px;
+}
+
+#card {
+  background-color: #FFFFFF;
+  margin-top: 0;
+  margin-bottom: 0;
+  // padding-top: 5px;
+  // padding-bottom: 10px;
+  padding: 5px 10px 10px 10px;
+}
+
+.shop_image {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.flex_center {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+#gen_div {
+  max-width: 500px;
+}
