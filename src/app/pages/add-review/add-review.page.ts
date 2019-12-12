@@ -65,6 +65,9 @@ export class AddReviewPage implements OnInit {
   updateStar($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
     this.rating=$event.newValue.toString();
   }
+  goHome() {
+    this.router.navigateByUrl('main/tab/home');
+  }
 
   ngOnInit() {
   }

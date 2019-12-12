@@ -1,13 +1,16 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color='primary' class='title'>
     <ion-buttons slot="start">
       <ion-back-button [defaultHref]='returnURL' text='INFO'></ion-back-button>
     </ion-buttons>
-    <ion-title>Add Review</ion-title>
+    <div class='flex' id='cute' (click)='goHome()'>CUTE</div>
+    <ion-icon name="home" slot='end' id='title_icon' (click)='goHome()'></ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+
+<ion-content color='secondary' class='font'>
+  <div class='r_color flex' id='review'>REVIEW</div>
   <ion-item>
     <ion-label>Location</ion-label>
     <ion-select [(ngModel)]='department' (ionChange)='getShops(department)' placeholder='Select'>
@@ -24,19 +27,19 @@
       <ion-select-option *ngFor='let shop of shopList' value={{shop.id}}>{{shop['name']}}</ion-select-option>
     </ion-select>
   </ion-item>
-  <div *ngIf='shopId'>
-    <ion-item>
-      <ion-label>Name</ion-label>
-      <ion-input [(ngModel)]='user' placeholde='Input'></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Rating</ion-label>
-      <star-rating [value]='rating' size='24px' (rate)='updateStar($event)' readonly='false' checkedcolor='gold'></star-rating>
-    </ion-item>
-    <ion-item>
-      <ion-label position='stacked'>Review</ion-label>
-      <ion-textarea [(ngModel)]='des' placeholde='Input'></ion-textarea>
-    </ion-item>
-    <ion-button expand='block' fill='clear' (click)='addReview()'>Submit</ion-button>  
+  <div id='review_div' *ngIf='shopId'>
+    <div id='name_rating'>
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-input maxlength='30' [(ngModel)]='user' placeholde='Input'></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Rating</ion-label>
+        <star-rating [value]='rating' size='24px' (rate)='updateStar($event)' readonly='false' checkedcolor='gold' uncheckedcolor='#c4c4c4'></star-rating>
+      </ion-item>      
+    </div>
+    <div class='white flex' id='description'>Description:</div>
+    <ion-textarea class='white' id='review_des' [(ngModel)]='des' placeholde='Input' spellcheck="true" rows="5" autocapitalize="on"></ion-textarea>
+    <ion-button class='r_color' id='submit_button' (click)='addReview()'>Submit</ion-button>  
   </div>  
 </ion-content>
