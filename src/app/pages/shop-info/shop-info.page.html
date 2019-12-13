@@ -60,7 +60,7 @@
           <div id='flex_col' *ngFor='let review of shop.review'>
             <div class='flex'>
               <div id='review_name'><b>{{review.name}}</b></div>
-              <star-rating id='review_star' value='{{review.rating}}' size='24px' readonly='true' checkedcolor='gold' uncheckedcolor='#c4c4c4'></star-rating> 
+              <star-rating id='review_star' value='{{review.rating}}' size='20px' readonly='true' checkedcolor='gold' uncheckedcolor='#c4c4c4'></star-rating> 
             </div>
             <div id='review_des' *ngIf='review.description'>{{review.description}}</div>
             <div id='review_des' *ngIf='!review.description'>No review written</div>
